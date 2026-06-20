@@ -80,7 +80,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-t from-[#060f1a]/80 via-transparent to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-center">
+      <div className="relative z-10 h-full flex items-center pt-20 pb-16 md:pb-32">
         <div className="container-custom w-full">
           <div className="max-w-3xl">
             {/* Slide indicator tag */}
@@ -168,7 +168,7 @@ export default function HeroSection() {
       </button>
 
       {/* Slide dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      <div className="absolute bottom-8 md:bottom-28 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -189,29 +189,31 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom info strip */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 hidden md:block">
-        <div className="grid grid-cols-2 md:grid-cols-4">
-          {[
-            { value: "500+", label: "m³/Day Capacity" },
-            { value: "2000+", label: "Projects Delivered" },
-            { value: "25+", label: "Transit Mixers" },
-            { value: "IS Certified", label: "IS 4926:2003" },
-          ].map((stat, i) => (
-            <div
-              key={i}
-              className="bg-[#1B3A6B]/80 backdrop-blur-sm border-r border-white/10 last:border-0 px-6 py-4 text-center"
-            >
+      <div className="absolute bottom-0 left-0 right-0 z-10 hidden md:block pb-6">
+        <div className="container-custom">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { value: "500+", label: "m³/Day Capacity" },
+              { value: "2000+", label: "Projects Delivered" },
+              { value: "25+", label: "Transit Mixers" },
+              { value: "IS Certified", label: "IS 4926:2003" },
+            ].map((stat, i) => (
               <div
-                className="text-2xl font-black text-[#E87B2C]"
-                style={{ fontFamily: "Syne, serif", fontWeight: 900 }}
+                key={i}
+                className="bg-[#1B3A6B]/85 backdrop-blur-md border border-white/10 rounded-xl px-6 py-4 text-center hover:bg-[#1B3A6B] hover:border-[#E87B2C]/50 transition-all duration-300"
               >
-                {stat.value}
+                <div
+                  className="text-2xl font-black text-[#E87B2C]"
+                  style={{ fontFamily: "Syne, serif", fontWeight: 900 }}
+                >
+                  {stat.value}
+                </div>
+                <div className="text-white/70 text-xs uppercase tracking-wider font-medium mt-0.5">
+                  {stat.label}
+                </div>
               </div>
-              <div className="text-white/70 text-xs uppercase tracking-wider font-medium mt-0.5">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
