@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CheckCircle2, Target, Eye, Building2, Users2, Award } from "lucide-react";
+import { Target, Eye } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Us",
