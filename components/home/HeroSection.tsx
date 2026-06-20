@@ -89,7 +89,7 @@ export default function HeroSection() {
             <h1
               className="text-white font-black leading-[0.95] mb-5"
               style={{
-                fontSize: "clamp(3rem, 8vw, 6.5rem)",
+                fontSize: "clamp(2.2rem, 8vw, 5.5rem)",
                 fontFamily: "Syne, Georgia, serif",
                 fontWeight: 900,
                 letterSpacing: "-0.01em",
@@ -185,7 +185,7 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom info strip */}
-      <div className="absolute bottom-0 left-0 right-0 z-10">
+      <div className="absolute bottom-0 left-0 right-0 z-10 hidden md:block">
         <div className="grid grid-cols-2 md:grid-cols-4">
           {[
             { value: "500+", label: "m³/Day Capacity" },

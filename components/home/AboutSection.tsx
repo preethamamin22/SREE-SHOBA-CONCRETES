@@ -159,11 +159,11 @@ export default function AboutSection() {
             </div>
 
             {/* Certifications */}
-            <div className="flex gap-4 mt-5">
+            <div className="grid grid-cols-3 gap-2 mt-5 sm:gap-4">
               {["IS 4926:2003", "BIS Certified", "QCI Compliant"].map((cert) => (
                 <div
                   key={cert}
-                  className="flex-1 border border-[#1B3A6B]/30 rounded-sm px-3 py-2.5 text-center hover:border-[#E87B2C] transition-colors"
+                  className="border border-[#1B3A6B]/30 rounded-sm px-3 py-2.5 text-center hover:border-[#E87B2C] transition-colors"
                 >
                   <CheckCircle className="w-4 h-4 text-[#E87B2C] mx-auto mb-1" />
                   <span className="text-xs font-bold text-[#1B3A6B] uppercase tracking-wide">{cert}</span>

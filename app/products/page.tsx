@@ -121,7 +121,7 @@ export default function ProductsPage() {
                   </div>
                   <Link
                     href={`/products/${product.slug}`}
-                    className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all duration-200 opacity-0 group-hover:opacity-100 translate-x-3 group-hover:translate-x-0"
+                    className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all duration-200 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 translate-x-0 lg:translate-x-3 lg:group-hover:translate-x-0"
                     style={{ color: product.color, borderColor: `${product.color}30` }}
                   >
                     Details <ArrowRight className="w-3 h-3" />

@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import { useInView } from "framer-motion";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const products = [
   {
@@ -66,15 +66,6 @@ const products = [
 export default function ProductsSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
-  const [startIndex, setStartIndex] = useState(0);
-  const visibleCount = 4;
-
-  const goPrev = () =>
-    setStartIndex((prev) => Math.max(prev - 1, 0));
-  const goNext = () =>
-    setStartIndex((prev) => Math.min(prev + 1, products.length - visibleCount));
-
-  const visible = products.slice(startIndex, startIndex + visibleCount);
 
   return (
     <section className="py-20 bg-[#0a0a0a]" ref={ref}>
@@ -98,19 +89,19 @@ export default function ProductsSection() {
           </p>
         </div>
 
-        {/* Product cards */}
-        <div className="relative">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {visible.map((product, i) => (
-              <div
-                key={product.slug}
-                className="bg-white group overflow-hidden"
-                style={{
-                  opacity: inView ? 1 : 0,
-                  transform: inView ? "translateY(0)" : "translateY(30px)",
-                  transition: `opacity 0.5s ease ${i * 0.1}s, transform 0.5s ease ${i * 0.1}s`,
-                }}
-              >
+        {/* Product cards grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {products.map((product, i) => (
+            <div
+              key={product.slug}
+              className="bg-white group overflow-hidden flex flex-col justify-between"
+              style={{
+                opacity: inView ? 1 : 0,
+                transform: inView ? "translateY(0)" : "translateY(30px)",
+                transition: `opacity 0.5s ease ${i * 0.1}s, transform 0.5s ease ${i * 0.1}s`,
+              }}
+            >
+              <div>
                 {/* Image */}
                 <div className="relative overflow-hidden h-52">
                   <img
@@ -125,7 +116,7 @@ export default function ProductsSection() {
                 </div>
 
                 {/* Body */}
-                <div className="p-5 border-b-4 border-transparent group-hover:border-[#E87B2C] transition-colors duration-300">
+                <div className="p-6">
                   <h3
                     className="text-[#E87B2C] font-bold text-base mb-2 group-hover:text-[#1B3A6B] transition-colors"
                     style={{ fontFamily: "Syne, serif", fontWeight: 700 }}
@@ -135,56 +126,25 @@ export default function ProductsSection() {
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
                     {product.description}
                   </p>
-                  <Link
-                    href={`/products/${product.slug}`}
-                    className="inline-flex items-center gap-1.5 text-[#1B3A6B] hover:text-[#E87B2C] font-semibold text-xs uppercase tracking-wider transition-colors"
-                    style={{ fontFamily: "Syne, serif" }}
-                  >
-                    Learn More <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
                 </div>
               </div>
-            ))}
-          </div>
 
-          {/* Nav arrows */}
-          <button
-            onClick={goPrev}
-            disabled={startIndex === 0}
-            className="absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-white hover:bg-[#E87B2C] text-gray-800 hover:text-white flex items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed z-10"
-            aria-label="Previous"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={goNext}
-            disabled={startIndex >= products.length - visibleCount}
-            className="absolute -right-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-white hover:bg-[#E87B2C] text-gray-800 hover:text-white flex items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed z-10"
-            aria-label="Next"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
-
-        {/* Dots */}
-        <div className="flex justify-center gap-2 mt-8">
-          {products.slice(0, products.length - visibleCount + 1).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setStartIndex(i)}
-              aria-label={`Show from product ${i + 1}`}
-              className="rounded-full transition-all duration-300"
-              style={{
-                width: i === startIndex ? "28px" : "8px",
-                height: "8px",
-                backgroundColor: i === startIndex ? "#E87B2C" : "rgba(255,255,255,0.3)",
-              }}
-            />
+              {/* Action footer */}
+              <div className="p-6 pt-0 border-b-4 border-transparent group-hover:border-[#E87B2C] transition-colors duration-300">
+                <Link
+                  href={`/products/${product.slug}`}
+                  className="inline-flex items-center gap-1.5 text-[#1B3A6B] hover:text-[#E87B2C] font-semibold text-xs uppercase tracking-wider transition-colors"
+                  style={{ fontFamily: "Syne, serif" }}
+                >
+                  Learn More <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-10">
+        <div className="text-center mt-12">
           <Link
             href="/products"
             className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-[#E87B2C] hover:bg-[#E87B2C] text-white font-bold text-sm uppercase tracking-wider px-8 py-3 transition-all duration-200"

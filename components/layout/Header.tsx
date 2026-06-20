@@ -38,6 +38,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -50,6 +51,7 @@ export default function Header() {
   useEffect(() => {
     setIsMobileOpen(false);
     setActiveDropdown(null);
+    setMobileDropdownOpen(null);
   }, [pathname]);
 
   useEffect(() => {
@@ -257,31 +259,52 @@ export default function Header() {
 
               <nav className="p-4 space-y-1">
                 {navLinks.map((link) => (
-                  <div key={link.href}>
-                    <Link
-                      href={link.href}
-                      className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
-                        pathname === link.href
-                          ? "bg-[#1B3A6B] text-white"
-                          : "text-[#1B3A6B] hover:bg-orange-50 hover:text-[#E87B2C]"
-                      }`}
-                      style={{ fontFamily: "Syne, serif" }}
-                    >
-                      {link.label}
-                    </Link>
+                  <div key={link.href} className="overflow-hidden">
+                    <div className="flex items-center justify-between gap-1">
+                      <Link
+                        href={link.href}
+                        className={`flex-1 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+                          pathname === link.href
+                            ? "bg-[#1B3A6B] text-white"
+                            : "text-[#1B3A6B] hover:bg-orange-50 hover:text-[#E87B2C]"
+                        }`}
+                        style={{ fontFamily: "Syne, serif" }}
+                      >
+                        {link.label}
+                      </Link>
+                      {link.children && (
+                        <button
+                          onClick={() => setMobileDropdownOpen(mobileDropdownOpen === link.label ? null : link.label)}
+                          className={`p-3 rounded-xl border border-gray-100 flex items-center justify-center text-[#1B3A6B] hover:bg-orange-50 hover:text-[#E87B2C] transition-all`}
+                          aria-label={`Toggle ${link.label} submenu`}
+                        >
+                          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileDropdownOpen === link.label ? "rotate-180" : ""}`} />
+                        </button>
+                      )}
+                    </div>
                     {link.children && (
-                      <div className="ml-4 mt-1 space-y-0.5">
-                        {link.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className="flex items-center gap-2 px-4 py-2 text-xs text-gray-600 hover:text-[#E87B2C] rounded-lg hover:bg-orange-50 transition-colors"
+                      <AnimatePresence initial={false}>
+                        {mobileDropdownOpen === link.label && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="overflow-hidden ml-4 mt-1 space-y-0.5"
                           >
-                            <child.icon className="w-3.5 h-3.5" />
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
+                            {link.children.map((child) => (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                className="flex items-center gap-2 px-4 py-2 text-xs text-gray-600 hover:text-[#E87B2C] rounded-lg hover:bg-orange-50 transition-colors"
+                              >
+                                <child.icon className="w-3.5 h-3.5" />
+                                {child.label}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     )}
                   </div>
                 ))}

@@ -108,11 +108,11 @@ export default function ProjectsSection() {
               />
 
               {/* Overlay on hover */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-all duration-300" />
+              <div className="absolute inset-0 bg-black/20 lg:bg-black/0 lg:group-hover:bg-black/25 transition-all duration-300" />
 
               {/* Content */}
               <div className="absolute inset-0 p-5 flex flex-col justify-end">
-                <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <div className="translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0 transition-transform duration-300">
                   <span className="text-white/60 text-xs uppercase tracking-widest font-semibold capitalize mb-1 block">
                     {project.category}
                   </span>
@@ -122,7 +122,7 @@ export default function ProjectsSection() {
                   >
                     {project.title}
                   </h4>
-                  <div className="flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex items-center justify-between opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
                     <div>
                       <div className="text-[#E87B2C] text-xs font-semibold">{project.volume}</div>
                       <div className="text-white/60 text-xs">{project.location}</div>

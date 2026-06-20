@@ -78,8 +78,8 @@ export default function GalleryPage() {
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
                   <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,1) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
-                  <div className="absolute inset-0 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 bg-black/20 lg:bg-black/0 lg:group-hover:bg-black/30 transition-all duration-300" />
+                  <div className="absolute inset-0 flex items-end p-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
                     <div>
                       <div className="text-white/60 text-xs capitalize mb-1">{item.category}</div>
                       <h3 className="text-white font-bold text-sm" style={{ fontFamily: "Syne, serif" }}>{item.title}</h3>
