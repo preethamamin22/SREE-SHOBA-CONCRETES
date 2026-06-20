@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Briefcase, MapPin, Clock, ArrowRight, Upload, CheckCircle2 } from "lucide-react";
+import { MapPin, Clock, ArrowRight, Upload, CheckCircle2 } from "lucide-react";
 
 const positions = [
   { title: "Concrete Technologist", dept: "Quality Control", type: "Full-time", location: "Bengaluru", exp: "3–5 years", desc: "Responsible for mix design, QC testing, cube testing, and maintaining QC records for all production batches." },

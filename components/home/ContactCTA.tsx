@@ -98,6 +98,7 @@ export default function ContactCTA() {
               target={action.href.startsWith("http") ? "_blank" : undefined}
               rel={action.href.startsWith("http") ? "noopener noreferrer" : undefined}
               className="group block p-7 rounded-2xl border transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] text-center"
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               style={{ background: action.bg, borderColor: action.border } as any}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}

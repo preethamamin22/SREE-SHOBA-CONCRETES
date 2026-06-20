@@ -97,7 +97,7 @@ export default function ProductsPage() {
       <section className="section-padding bg-white py-16 lg:py-24">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-            {products.map((product, i) => (
+            {products.map((product) => (
               <div key={product.slug} className="group bg-white rounded-2xl border border-gray-100 hover:shadow-[0_16px_48px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                 {/* Header */}
                 <div
