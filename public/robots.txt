@@ -1,5 +1,13 @@
+# *
 User-agent: *
 Allow: /
-Disallow: /api/
 
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Host
+Host: https://sreeshobaconcretes.com
+
+# Sitemaps
 Sitemap: https://sreeshobaconcretes.com/sitemap.xml
