@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight, ArrowRight, Phone } from "lucide-react";
 
 const slides = [
@@ -63,13 +64,16 @@ export default function HeroSection() {
   return (
     <section className="relative w-full h-[88vh] min-h-[560px] max-h-[820px] overflow-hidden bg-[#0a0a0a]">
       {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
-        style={{
-          backgroundImage: `url(${slide.image})`,
-          opacity: isTransitioning ? 0 : 1,
-        }}
-      />
+      <div className="absolute inset-0 transition-opacity duration-700" style={{ opacity: isTransitioning ? 0 : 1 }}>
+        <Image
+          src={slide.image}
+          alt="Sree Shoba Concretes Hero Background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
 
       {/* Dark gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#060f1a]/85 via-[#060f1a]/60 to-[#060f1a]/30" />
