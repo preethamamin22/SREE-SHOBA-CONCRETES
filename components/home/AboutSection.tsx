@@ -73,7 +73,7 @@ export default function AboutSection() {
             <p className="text-gray-700 leading-relaxed mb-5 text-base" style={{ textAlign: "justify" }}>
               Our state-of-the-art batching plant is equipped with PLC automation, twin-shaft
               mixers, and advanced quality control systems — ensuring that every cubic metre we
-              deliver meets the highest Indian Standards and your project's exact specifications.
+              deliver meets the highest Indian Standards and your project&apos;s exact specifications.
             </p>
 
             <p className="text-gray-700 leading-relaxed mb-8 text-base" style={{ textAlign: "justify" }}>

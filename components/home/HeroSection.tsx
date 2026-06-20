@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -41,7 +40,6 @@ export default function HeroSection() {
       goNext();
     }, 6000);
     return () => clearInterval(timer);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current]);
 
   const goNext = () => {

@@ -106,7 +106,7 @@ export default function WhyChooseUs() {
               key={i}
               variants={cardAnim}
               className="group bg-white rounded-2xl p-7 border cursor-default transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_56px_rgba(0,0,0,0.12)]"
-              style={{ borderColor: reason.border }}
+              style={{ borderColor: reason.border } as any}
             >
               {/* Icon */}
               <div
