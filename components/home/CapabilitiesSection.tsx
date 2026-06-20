@@ -17,7 +17,7 @@ const capabilities = [
     description:
       "We consider technical capability as our core competency. Our in-house laboratory rigorously tests every batch to IS 4926:2003 standards.",
     image:
-      "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400&auto=format&fit=crop",
   },
   {
     title: "Fleet & Delivery",
